@@ -10,6 +10,9 @@ public class ScriptRunner {
     private String problem = "MiniSat+/Examples/garden9x9.opb";
     private String solution = "Solution/ans.txt";
 
+    private String gedit = "src/script/gedit.sh";
+    private String manual = "Solution/manual.txt";
+
 
     public void setProblem(String path) {
         this.problem = path;
@@ -67,5 +70,34 @@ public class ScriptRunner {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void geditProblem(int fileToShow){
+        Process g;
+        try {
+            String [] commands;
+            switch (fileToShow){
+                case 0: {
+                    commands = new String[]{gedit, manual};
+                    break;
+                }
+                case 1: {
+                    commands = new String[]{gedit, problem};
+                    break;
+                }
+                case 2: {
+                    commands = new String[]{gedit, solution};
+                    break;
+                }
+                default:{
+                    commands = new String[]{gedit, ""};
+                    break;
+                }
+            }
+            g = Runtime.getRuntime().exec(commands);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
