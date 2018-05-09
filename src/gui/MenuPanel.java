@@ -19,9 +19,27 @@ public class MenuPanel extends JPanel {
         this.setLayout(null);
 
         JButton btnStart = new JButton("Start");
+        btnStart.setBounds(10, 10, 200, 20);
+
         JButton btnChooseFile = new JButton("Wybierz plik .opb");
-        btnStart.setBounds(10, 10, 90, 20);
-        btnChooseFile.setBounds(110, 10, 150, 20);
+        btnChooseFile.setBounds(220, 10, 200, 20);
+
+        JButton btnManual = new JButton("Instrukcja");
+        btnManual.setBounds(10, 40, 200, 20);
+
+        JButton btnShowFile = new JButton("Wyświetl plik .opb");
+        btnShowFile.setBounds(220, 40, 200, 20);
+
+        JButton btnShowAns = new JButton("Wyświetl pełny wynik");
+        btnShowAns.setBounds(10, 70, 200, 20);
+
+        JButton btnLeaveMe = new JButton("Wyjdź");
+        btnLeaveMe.setBounds(220, 70, 200, 20);
+
+
+
+
+
         btnStart.getModel().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -29,6 +47,7 @@ public class MenuPanel extends JPanel {
             }
 
         });
+
         btnChooseFile.getModel().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,7 +62,33 @@ public class MenuPanel extends JPanel {
                 }
             }
         });
+
+        btnManual.getModel().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                runner.geditProblem(0);
+            }
+        });
+
+        btnShowFile.getModel().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                runner.geditProblem(1);
+            }
+        });
+
+        btnShowAns.getModel().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                runner.geditProblem(2);
+            }
+        });
+
         add(btnStart);
         add(btnChooseFile);
+        add(btnManual);
+        add(btnShowFile);
+        add(btnShowAns);
+        add(btnLeaveMe);
     }
 }
