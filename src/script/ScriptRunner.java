@@ -1,9 +1,6 @@
 package script;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class ScriptRunner {
     private String script = "MiniSat+/run.sh";
@@ -13,7 +10,14 @@ public class ScriptRunner {
     private String gedit = "src/script/gedit.sh";
     private String manual = "Solution/manual.txt";
 
+    private String result;
 
+    public ScriptRunner() throws FileNotFoundException {
+        PrintWriter writer = new PrintWriter(solution);
+        writer.print("Brak wyniku.");
+        writer.close();
+
+    }
     public void setProblem(String path) {
         this.problem = path;
     }
@@ -39,11 +43,15 @@ public class ScriptRunner {
                     if (currentLine.startsWith("s")) {
                         System.out.println(previousLine);
                         System.out.println(currentLine);
+                        result = currentLine.substring(2) + "\n";
                     } else if (currentLine.startsWith("v")) {
                         System.out.println(currentLine);
+                        result += currentLine.substring(2) + "\n";
                     }
                     previousLine = currentLine;
                 }
+                System.out.println("RESULT");
+                System.out.println(result);
 
             } catch (IOException e) {
 
@@ -99,5 +107,9 @@ public class ScriptRunner {
             e.printStackTrace();
         }
 
+    }
+
+    public String getResult(){
+        return this.result;
     }
 }

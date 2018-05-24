@@ -3,7 +3,7 @@ package gui;
 import script.ScriptRunner;
 
 
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -36,16 +36,14 @@ public class MenuPanel extends JPanel {
         JButton btnLeaveMe = new JButton("Wyjdź");
         btnLeaveMe.setBounds(220, 70, 200, 20);
 
-
-
-
-
         btnStart.getModel().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 runner.runScript();
+                MyFrame frame = new MyFrame();
+                frame.add(new JTextArea(runner.getResult()));
+                frame.pack();
             }
-
         });
 
         btnChooseFile.getModel().addActionListener(new ActionListener() {
@@ -81,6 +79,13 @@ public class MenuPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 runner.geditProblem(2);
+            }
+        });
+
+        btnLeaveMe.getModel().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               System.exit(0);
             }
         });
 

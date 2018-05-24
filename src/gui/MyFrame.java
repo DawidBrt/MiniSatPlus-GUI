@@ -1,6 +1,7 @@
 package gui;
 
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
 
 public class MyFrame extends JFrame{
 
@@ -9,6 +10,10 @@ public class MyFrame extends JFrame{
         add(menuPanel);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+    public MyFrame(){
+        super("MiniSat+");
         setVisible(true);
     }
 }
