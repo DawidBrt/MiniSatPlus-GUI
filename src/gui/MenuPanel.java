@@ -2,7 +2,6 @@ package gui;
 
 import script.ScriptRunner;
 
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +12,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
 public class MenuPanel extends JPanel {
+
+    private JScrollPane jScrollPane;
 
     public MenuPanel(int width, int height, ScriptRunner runner) {
         setPreferredSize(new Dimension(width, height));
@@ -39,10 +40,17 @@ public class MenuPanel extends JPanel {
         btnStart.getModel().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (jScrollPane!=null){
+                    remove(jScrollPane);
+                }
                 runner.runScript();
-                MyFrame frame = new MyFrame();
-                frame.add(new JTextArea(runner.getResult()));
-                frame.pack();
+                JTextArea display = new JTextArea(runner.getResult());
+                jScrollPane = new JScrollPane(display);
+                jScrollPane.setVerticalScrollBarPolicy (ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+                jScrollPane.setBounds(10, 100, 410, 65);
+                add(jScrollPane);
+                revalidate();
+                repaint();
             }
         });
 
@@ -95,5 +103,7 @@ public class MenuPanel extends JPanel {
         add(btnShowFile);
         add(btnShowAns);
         add(btnLeaveMe);
+
+
     }
 }

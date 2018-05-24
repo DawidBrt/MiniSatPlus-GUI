@@ -13,7 +13,7 @@ public class Main {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        MenuPanel menuPanel = new MenuPanel(435,100,scriptRunner);
+        MenuPanel menuPanel = new MenuPanel(430,170,scriptRunner);
         MyFrame myFrame = new MyFrame(menuPanel);
     }
 }

@@ -12,8 +12,4 @@ public class MyFrame extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
-    public MyFrame(){
-        super("MiniSat+");
-        setVisible(true);
-    }
 }
