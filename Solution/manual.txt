@@ -1,2 +1,24 @@
-Tu ma byc instrukcja ale nie chce mi sie jej pisac
-ELO
+INSTRUKCJA
+Z czego ma się składać plik wykonywalny .opb
+
+Plik składa się z:
+- fukcji celu (min) zakończoną średnikiem,
+- warunków, które zmienne mają spełniać, również zakończonych średnikiem,
+- ewentualnych komentarzy rozpoczętych znakiem '*'.
+
+UWAGA!
+Zmienne MUSZĄ być poprzedzone liczbą CAŁKOWITĄ oraz znakiem mnożenia(*) między liczbą a zmienną.
+
+Nieprawidłowy zapis:   1.2*x1-x2+3x3<=2
+Prawidłowy zapis:      1*x1-1*x2+3*x3>=1;
+
+---------------------------------------
+Przykładowy plik powinien wyglądać tak:
+
+* przyklad.opb
+* funkcja celu
+min: 1*v1 +1*v2 + 1*v3 + 1*v4;
+* warunek pierwszy
++1*v1  +1*v2 -1*v3  -1*v4  >= 1;
+* warunek drugi
++1*v1  -1*v2 +1*v3  +1*v4  >= 1;
